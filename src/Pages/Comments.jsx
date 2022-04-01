@@ -15,19 +15,22 @@ const Comments = () => {
   const totalPost = postPerPage * 10;
 
   const paginate = (num) => {
-    setIndexOfFirstPost(num * 10)
-  }
+    setIndexOfFirstPost(num * 10);
+  };
 
   useEffect(() => {
     dispatch(fetchComments(indexOfFirstPost, postPerPage));
-  }, [indexOfFirstPost, postPerPage]);
+  }, [indexOfFirstPost, postPerPage, dispatch]);
+
   return (
     <>
       {comments.comments && (
-        <Table data={comments.comments} columns={columns} 
+        <Table
+          data={comments.comments}
+          columns={columns}
           postPerPage={postPerPage}
           totalPost={totalPost}
-          paginate ={paginate}
+          paginate={paginate}
         />
       )}
     </>

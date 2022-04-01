@@ -19,7 +19,7 @@ function Posts() {
 
   useEffect(() => {
     dispatch(fetchPostData(indexOfFirstPost, postPerPage));
-  }, [indexOfFirstPost, postPerPage]);
+  }, [indexOfFirstPost, postPerPage, dispatch]);
 
   return (
     <>
