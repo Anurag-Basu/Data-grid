@@ -7,26 +7,34 @@ import { fetchComments } from "../Components/Redux/Comments/CommentAction";
 
 const columns = ["id", "postId", "name", "email", "body"];
 const Comments = () => {
-  const comments = useSelector((state) => state.comments);
+  const { comments } = useSelector((state) => state.comments);
   const dispatch = useDispatch();
-
-  const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
-  const [postPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [postPerPage] = useState(20);
+  const [tableData, setTableData] = useState([]);
   const totalPost = postPerPage * 10;
+  console.log(currentPage, postPerPage, comments )
 
   const paginate = (num) => {
-    setIndexOfFirstPost(num * 10);
+    setCurrentPage(num);
   };
 
   useEffect(() => {
-    dispatch(fetchComments(indexOfFirstPost, postPerPage));
-  }, [indexOfFirstPost, postPerPage, dispatch]);
+    if (comments[currentPage]) {
+      return setTableData(comments[currentPage]);
+    }
+    dispatch(fetchComments(currentPage, postPerPage));
+  }, [currentPage, postPerPage, dispatch]);
+
+  useEffect(() => {
+    setTableData(comments[currentPage]);
+  }, [comments]);
 
   return (
     <>
-      {comments.comments && (
+      {comments && (
         <Table
-          data={comments.comments}
+          data={tableData}
           columns={columns}
           postPerPage={postPerPage}
           totalPost={totalPost}

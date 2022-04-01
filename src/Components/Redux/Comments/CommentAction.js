@@ -11,10 +11,10 @@ export const fetchCommentRequest = () => {
     }
 }
 
-export const fetchCommentSuccess = (comment) => {
+export const fetchCommentSuccess = (comments, currentPage) => {
     return {
         type : FETCH_COMMENT_SUCCESS,
-        payload : comment
+        payload : {comments, currentPage}
 
     }
 
@@ -27,12 +27,15 @@ export const fetchCommentFailure = (error) => {
     }
 }
 
-export const fetchComments = (indexOfFirstPost, postPerPage) => {
-    const url = `https://jsonplaceholder.typicode.com/comments?_start=${indexOfFirstPost}&_limit=${postPerPage}`;
+export const fetchComments = (currentPage, postPerPage) => {
+    const url = `https://jsonplaceholder.typicode.com/comments?_start=${currentPage * postPerPage}&_limit=${postPerPage}`;
     return (dispatch) => {
         dispatch(fetchCommentRequest());
         axios.get(url) 
-        .then(response => dispatch(fetchCommentSuccess(response.data)))
+        .then(response => {
+            const comments = response.data;
+            dispatch(fetchCommentSuccess(comments, currentPage));
+        })
         .catch(error => dispatch(fetchCommentFailure(error.message)))
     }
 }

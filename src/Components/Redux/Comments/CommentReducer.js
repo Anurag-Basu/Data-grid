@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     loading : true,
-    comments : null,
+    comments : {},
     error : ''
 }
 
@@ -18,9 +18,11 @@ const commentReducer = (state = initialState, {type, payload}) =>  {
                 loading: true
             }
         case FETCH_COMMENT_SUCCESS: 
+            const comments = { ...state.comments };
+            comments[payload.currentPage] = payload.comments;
             return {
                 loading : false,
-                comments : payload,
+                comments,
                 error : ''
             }
         case FETCH_COMMENT_FAILURE : 

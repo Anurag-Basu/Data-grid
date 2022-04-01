@@ -6,26 +6,35 @@ import { fetchPostData } from "../Components/Redux/Posts/PostAction";
 
 const columns = ["id", "userId", "body", "title"];
 function Posts() {
-  const [indexOfFirstPost, SetIndexOfFirstPost] = useState(0);
-  const [postPerPage] = useState(10);
-  const totalPost = postPerPage * 10;;
-  // const [indexOfLastPage, setIndexOfLastPage] = useState(10);
-  const posts = useSelector((state) => state.posts);
+  const { posts } = useSelector((state) => state.posts);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [tableData, setTableData] = useState([]);
+  const [postPerPage] = useState(20);
+  const totalPost = postPerPage * 5;
   const dispatch = useDispatch();
 
   const paginate = (num) => {
-    SetIndexOfFirstPost(num * 10);
+    setCurrentPage(num);
   };
 
   useEffect(() => {
-    dispatch(fetchPostData(indexOfFirstPost, postPerPage));
-  }, [indexOfFirstPost, postPerPage, dispatch]);
+    if (posts[currentPage]) {
+      setTableData(posts[currentPage]);
+      return;
+    }
+    dispatch(fetchPostData(currentPage, postPerPage));
+  }, [currentPage, postPerPage, dispatch]);
+
+  useEffect(() => {
+    setTableData(posts[currentPage])
+  }, [posts]);
+
 
   return (
     <>
-      {posts.posts && (
+      {posts && (
         <Table
-          data={posts.posts}
+          data={tableData}
           columns={columns}
           postPerPage={postPerPage}
           totalPost={totalPost}
