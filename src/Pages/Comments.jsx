@@ -24,11 +24,11 @@ const Comments = () => {
       return setTableData(comments[currentPage]);
     }
     dispatch(fetchComments(currentPage, postPerPage));
-  }, [currentPage, postPerPage, dispatch]);
+  }, [currentPage, postPerPage, dispatch, comments]);
 
   useEffect(() => {
     setTableData(comments[currentPage]);
-  }, [comments]);
+  }, [currentPage, postPerPage, dispatch,comments]);
 
   return (
     <>

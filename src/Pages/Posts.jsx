@@ -23,11 +23,11 @@ function Posts() {
       return;
     }
     dispatch(fetchPostData(currentPage, postPerPage));
-  }, [currentPage, postPerPage, dispatch]);
+  }, [currentPage, postPerPage, dispatch, posts]);
 
   useEffect(() => {
     setTableData(posts[currentPage])
-  }, [posts]);
+  }, [currentPage, postPerPage, dispatch,posts]);
 
 
   return (
