@@ -10,7 +10,7 @@ const Pagination = ({ postPerPage, totalPost, paginate }) => {
 
   return (
     <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
-      <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+      <div className=" sm:flex-1 sm:flex sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
             Showing <span className="font-medium"> {currentPage} </span> of
@@ -29,7 +29,7 @@ const Pagination = ({ postPerPage, totalPost, paginate }) => {
               return (
                 <span
                   key={num}
-                  className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                  className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-3 py-2 border text-sm font-medium"
                   onClick={() => {
                     paginate(num);
                     setCurrentPage(num + 1);

@@ -27,7 +27,7 @@ function Table({ data, columns, postPerPage, totalPost, paginate }) {
     if (sortConfig.column !== column) setSortConfig({ column, asc: true });
     else setSortConfig({ column, asc: !sortConfig.asc });
   };
-
+  console.log(sortConfig)
 
   useEffect(() => {
     setFilterData(data || []);
@@ -75,9 +75,7 @@ function Table({ data, columns, postPerPage, totalPost, paginate }) {
           </div>
         </div>
 
-        <div className="flex capitalize justify-end pr-10">
-          filter
-        </div>
+        
 
         <div className="flex flex-col w-[98vw] m-auto">
           <div className="overflow-x-auto ">
