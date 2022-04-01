@@ -7,7 +7,7 @@ import { fetchPostData } from "../Components/Redux/Posts/PostAction";
 const columns = ["id", "userId", "body", "title"];
 function Posts() {
   const [indexOfFirstPost, SetIndexOfFirstPost] = useState(0);
-  const [postPerPage, setPostPerPage] = useState(10);
+  const [postPerPage] = useState(10);
   const totalPost = postPerPage * 10;;
   // const [indexOfLastPage, setIndexOfLastPage] = useState(10);
   const posts = useSelector((state) => state.posts);
