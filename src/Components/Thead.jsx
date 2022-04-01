@@ -3,12 +3,12 @@ import { v4 as uuidv4 } from "uuid";
 import Th from "./Th";
 import Tr from "./Tr";
 
-const Thead = ({ columns, sort }) => {
+const Thead = ({ columns, sort, sortConfig }) => {
   return (
     <thead className="bg-gray-200 border-b-2 border-gray-500">
       <Tr>
         {columns.map((column) => (
-          <Th onClick={sort} key={uuidv4()} title={column} />
+          <Th onClick={sort} key={uuidv4()} title={column} sortConfig={sortConfig} />
         ))}
       </Tr>
     </thead>

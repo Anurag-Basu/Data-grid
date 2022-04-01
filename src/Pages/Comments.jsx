@@ -11,11 +11,11 @@ const Comments = () => {
   const dispatch = useDispatch();
 
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
-  const [postPerPage] = useState(50);
+  const [postPerPage] = useState(10);
   const totalPost = postPerPage * 10;
 
   const paginate = (num) => {
-    setIndexOfFirstPost(num * 50)
+    setIndexOfFirstPost(num * 10)
   }
 
   useEffect(() => {

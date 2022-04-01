@@ -36,8 +36,8 @@ function Table({ data, columns, postPerPage, totalPost, paginate }) {
 
   return (
     <>
-      <div>
-        <div className="flex justify-center my-3">
+      <div >
+        <div className="flex justify-center  my-3">
           <div className="mb-3 xl:w-96">
             <div className="input-group relative flex  items-stretch w-full mb-4">
               <input
@@ -74,12 +74,17 @@ function Table({ data, columns, postPerPage, totalPost, paginate }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+
+        <div className="flex capitalize justify-end pr-10">
+          filter
+        </div>
+
+        <div className="flex flex-col w-[98vw] m-auto">
+          <div className="overflow-x-auto ">
+            <div className="py-2 inline-block min-w-full ">
               <div className="overflow-x-auto">
                 <table className="min-w-full">
-                  <Thead sort={handleSort} columns={columns} />
+                  <Thead sort={handleSort} columns={columns} sortConfig={sortConfig} />
                   <Tbody columns={columns} data={filterData}></Tbody>
                 </table>
               </div>
