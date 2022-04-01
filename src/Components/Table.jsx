@@ -27,7 +27,6 @@ function Table({ data, columns, postPerPage, totalPost, paginate }) {
     if (sortConfig.column !== column) setSortConfig({ column, asc: true });
     else setSortConfig({ column, asc: !sortConfig.asc });
   };
-  console.log(sortConfig)
 
   useEffect(() => {
     setFilterData(data || []);

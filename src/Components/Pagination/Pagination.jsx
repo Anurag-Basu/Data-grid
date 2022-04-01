@@ -8,6 +8,7 @@ const Pagination = ({ postPerPage, totalPost, paginate }) => {
   }
   const [currentPage, setCurrentPage] = useState(1);
 
+
   return (
     <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
       <div className=" sm:flex-1 sm:flex sm:items-center sm:justify-between">
@@ -29,7 +30,7 @@ const Pagination = ({ postPerPage, totalPost, paginate }) => {
               return (
                 <span
                   key={num}
-                  className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-3 py-2 border text-sm font-medium"
+                  className={`cursor-pointer z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-3 py-2 border text-sm font-medium ${currentPage === num + 1 && "border-4 font-bold"}`}
                   onClick={() => {
                     paginate(num);
                     setCurrentPage(num + 1);
