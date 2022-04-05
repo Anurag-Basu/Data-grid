@@ -28,7 +28,7 @@ const userReducer = (state = initialState, {type, payload}) =>  {
             return {
                 loading : false,
                 users : null,
-                eroor : payload
+                error : payload
             }
         default : 
             return state;

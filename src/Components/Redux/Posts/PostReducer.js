@@ -10,6 +10,7 @@ let initialState = {
   error: "",
 };
 
+
 const postReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_POST_REQUEST:
@@ -29,8 +30,8 @@ const postReducer = (state = initialState, { type, payload }) => {
     case FETCH_POST_FAILURE:
       return {
         loading: false,
-        posts: null,
-        eroor: payload,
+        posts: {},
+        error: payload,
       };
     default:
       return state;

@@ -25,10 +25,9 @@ export const fetchPostFailure = (error) => {
   };
 };
 
+
 export const fetchPostData = (currentPage, postPerPage) => {
-  const url = `https://jsonplaceholder.typicode.com/posts?_start=${
-    currentPage * postPerPage
-  }&_limit=${postPerPage}`;
+  const url = `https://jsonplaceholder.typicode.com/posts?_start=${currentPage * postPerPage}&_limit=${postPerPage}`;
   return (dispatch) => {
     dispatch(fetchPostRequest());
     axios

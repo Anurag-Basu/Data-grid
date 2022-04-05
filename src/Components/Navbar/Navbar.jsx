@@ -8,15 +8,12 @@ const Navbar = () => {
      
       <div className="flex items-center justify-end  w-full p3">
         <Link to="/">
-          {" "}
           <span className="px-5"> Users </span>
         </Link>
         <Link to="/posts">
-          {" "}
           <span className="px-5"> Posts </span>
         </Link>
-        <Link to="comments">
-          {" "}
+        <Link to="/comments">
           <span className="pr-14 pl-5"> Comments </span>
         </Link>
       </div>

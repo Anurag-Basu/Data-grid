@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Table } from "../Components";
 import { fetchPostData } from "../Components/Redux/Posts/PostAction";
 
+
 const columns = ["id", "userId", "body", "title"];
+
+
 function Posts() {
   const { posts } = useSelector((state) => state.posts);
   const [currentPage, setCurrentPage] = useState(0);

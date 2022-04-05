@@ -28,7 +28,7 @@ const commentReducer = (state = initialState, {type, payload}) =>  {
         case FETCH_COMMENT_FAILURE : 
             return {
                 loading : false,
-                comments : null,
+                comments : {},
                 error : payload
             }
         default : 
